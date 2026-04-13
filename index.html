@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DocMaker AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+      window.tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif']
+            },
+            colors: {
+              black: {
+                DEFAULT: '#0D0D0D',
+                '100': '#1A1A1A',
+                '200': '#2A2A2A',
+                '300': '#3A3A3A'
+              }
+            }
+          }
+        }
+      };
+    </script>
+    <style>
+      body {
+        background-color: #0D0D0D;
+        color: #E5E5E5;
+        margin: 0;
+        padding: 0;
+      }
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0D0D0D; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #2A2A2A; 
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #3A3A3A; 
+      }
+
+      ::selection {
+        background-color: #F59E0B;
+        color: #000000;
+      }
+
+      @keyframes premium-glow {
+        0%, 100% { box-shadow: 0 0 10px rgba(251, 191, 36, 0.3); transform: scale(1); }
+        50% { box-shadow: 0 0 20px rgba(251, 191, 36, 0.6); transform: scale(1.02); }
+      }
+      .animate-premium {
+        animation: premium-glow 3s infinite ease-in-out;
+      }
+
+      @keyframes green-glow {
+        0%, 100% { box-shadow: 0 0 10px rgba(16, 185, 129, 0.2); transform: scale(1); }
+        50% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.4); transform: scale(1.02); }
+      }
+      .animate-green-glow {
+        animation: green-glow 3s infinite ease-in-out;
+      }
+      
+      @media print {
+        @page { 
+          margin: 10mm; 
+          size: A4; 
+        }
+        .no-print {
+          display: none !important;
+        }
+        body {
+          background-color: white !important;
+          color: black !important;
+        }
+        #root {
+          background-color: white !important;
+        }
+        /* Ensure the document container expands for print */
+        #printable-document-container {
+           column-count: 1 !important;
+           width: 100% !important;
+           height: auto !important;
+           transform: none !important;
+           display: block !important;
+           overflow: visible !important;
+        }
+        #printable-document {
+          width: 100% !important;
+          height: auto !important;
+          overflow: visible !important;
+          color: black !important;
+          background: white !important;
+          transform: none !important;
+          outline: none !important; 
+        }
+      }
+    </style>
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@^19.2.3",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+        "react/": "https://esm.sh/react@^19.2.3/",
+        "@google/genai": "https://esm.sh/@google/genai@^1.33.0",
+        "lucide-react": "https://esm.sh/lucide-react@^0.561.0"
+      }
+    }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
